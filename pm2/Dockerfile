@@ -1,5 +1,5 @@
-FROM mhart/node-alpine:latest
-MAINTAINER Keymetrics <contact@keymetrics.io>
+FROM limaofeng/node-alpine:latest
+MAINTAINER limaofeng <limaofeng@msn.com>
 
 RUN npm install pm2@next -g
 
