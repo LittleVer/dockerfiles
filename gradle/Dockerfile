@@ -20,6 +20,7 @@ RUN set -x \
 # 设置 app 目录
 WORKDIR /app
 
+# 添加 bash
 RUN apk update && apk add bash libstdc++ && rm -rf /var/cache/apk/*
 
 # 设置时区
