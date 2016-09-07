@@ -44,13 +44,13 @@ RUN apk add --no-cache curl make gcc g++ python linux-headers paxctl libgcc libs
     /usr/share/man /tmp/* /var/cache/apk/* /root/.npm /root/.node-gyp /root/.gnupg \
     /usr/lib/node_modules/npm/man /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html
 
-# 添加 bash
-RUN apk update && apk add bash libstdc++ && rm -rf /var/cache/apk/*
-
-# 设置时区
-RUN apk update && apk add ca-certificates && \
+    # 设置 npm 淘宝镜像
+RUN npm --registry https://registry.npm.taobao.org && \ 
+    # 添加 bash
+    apk update && apk add bash libstdc++ && \
+    # 设置时区
+    apk add ca-certificates && \
     apk add tzdata && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
     rm -rf /var/cache/apk/*
-
