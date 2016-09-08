@@ -54,3 +54,5 @@ RUN echo registry=http://registry.cnpmjs.org >> ~/.npmrc && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
     rm -rf /var/cache/apk/*
+    
+ENV LANG="zh_CN.UTF-8"
