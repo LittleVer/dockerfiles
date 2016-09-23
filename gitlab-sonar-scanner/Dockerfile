@@ -1,5 +1,5 @@
 FROM java:8-jre-alpine
-MAINTAINER 蒼時弦也 docker@frost.tw
+MAINTAINER 李茂峰 limaofeng@msn.com
 
 ENV SONAR_SCANNER_VERSION 2.6.1
 ENV SONAR_SCANNER_HOME /opt/sonar-scanner-${SONAR_SCANNER_VERSION}
