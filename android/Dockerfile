@@ -2,8 +2,9 @@ FROM limaofeng/gradle-alpine
 MAINTAINER limaofeng <limaofeng@msn.com>
 
 # 安装 android 环境
-RUN apt-get --quiet update --yes && \
-    apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 && \
+RUN cd /usr/lib/ && \
+    set -x && \
+    apk add --no-cache wget && \
     wget --quiet --output-document=android-sdk.tgz https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz && \
     tar --extract --gzip --file=android-sdk.tgz && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter android-23 && \
@@ -12,4 +13,6 @@ RUN apt-get --quiet update --yes && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository && \
-    export ANDROID_HOME=$PWD/android-sdk-linux
+    export ANDROID_HOME=$PWD/android-sdk-linux && \
+    rm android-sdk.tgz && \
+    apk del wget
