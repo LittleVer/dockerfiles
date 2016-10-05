@@ -1,4 +1,4 @@
-FROM java:8-jdk-alpine
+FROM limaofeng/gradle-alpine
 MAINTAINER limaofeng <limaofeng@msn.com>
 
 # 安装 android 环境
