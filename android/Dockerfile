@@ -15,8 +15,4 @@ RUN cd /usr/lib/ && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository && \
     export ANDROID_HOME=$PWD/android-sdk-linux && \
     rm android-sdk.tgz && \
-    mkdir ~/.gradle/ && \
-    mkdir ~/.gradle/distribution && \
-    cd ~/.gradle/distribution && \
-    wget --quiet --output-document=gradle-2.13-all.zip https://services.gradle.org/distributions/gradle-2.13-all.zip && \
     apk del wget
