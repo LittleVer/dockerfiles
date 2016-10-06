@@ -13,6 +13,7 @@ RUN cd /usr/lib/ && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository && \
-    export ANDROID_HOME=$PWD/android-sdk-linux && \
     rm android-sdk.tgz && \
     apk del wget
+
+ENV ANDROID_HOME /usr/lib/android-sdk-linux
