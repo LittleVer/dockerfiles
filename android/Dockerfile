@@ -17,10 +17,10 @@ RUN apt-get install tzdata && \
 WORKDIR /usr/lib/gradle
 
 # 安装 gradle
-RUN set -x \
-  && wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip \
-  && unzip gradle-${GRADLE_VERSION}-bin.zip \
-  && rm gradle-${GRADLE_VERSION}-bin.zip
+RUN set -x && \
+    wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip && \
+    unzip gradle-${GRADLE_VERSION}-bin.zip && \
+    rm gradle-${GRADLE_VERSION}-bin.zip
 
 # 安装 android 环境
 RUN cd /usr/lib/ && \
