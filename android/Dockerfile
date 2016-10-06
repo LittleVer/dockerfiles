@@ -37,5 +37,5 @@ RUN cd /usr/lib/ && \
     rm android-sdk.tgz
 
 # 设置 app 目录
-RUN mkdir /app
-WORKDIR /app
+RUN mkdir /workspace
+WORKDIR /workspace
