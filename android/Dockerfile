@@ -33,7 +33,8 @@ RUN cd /usr/lib/ && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services && \
     echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository && \
-    rm android-sdk.tgz
+    rm android-sdk.tgz && \
+    apt-get update && apt-get install -y libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1
 
 # 设置 app 目录
 WORKDIR /workspace
