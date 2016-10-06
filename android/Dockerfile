@@ -2,11 +2,17 @@ FROM java:openjdk-8-jdk
 
 MAINTAINER limaofeng <limaofeng@msn.com>
 
-RUN mkdir /usr/lib/gradle
+RUN mkdir /usr/lib/gradle /workspace
 
 ENV GRADLE_VERSION 2.13
 ENV GRADLE_HOME /usr/lib/gradle/gradle-${GRADLE_VERSION}
 ENV PATH ${PATH}:${GRADLE_HOME}/bin
+ENV ANDROID_HOME /usr/lib/android-sdk-linux
+
+# 设置时区
+RUN apt-get install tzdata && \
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" > /etc/timezone
 
 WORKDIR /usr/lib/gradle
 
@@ -15,13 +21,6 @@ RUN set -x \
   && wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip \
   && unzip gradle-${GRADLE_VERSION}-bin.zip \
   && rm gradle-${GRADLE_VERSION}-bin.zip
-
-# 设置时区
-RUN apt-get install tzdata && \
-    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo "Asia/Shanghai" > /etc/timezone
-
-ENV ANDROID_HOME /usr/lib/android-sdk-linux
 
 # 安装 android 环境
 RUN cd /usr/lib/ && \
@@ -37,5 +36,4 @@ RUN cd /usr/lib/ && \
     rm android-sdk.tgz
 
 # 设置 app 目录
-RUN mkdir /workspace
 WORKDIR /workspace
