@@ -17,12 +17,10 @@ RUN apk update \
 RUN addgroup sonar \
   && adduser -D -s /usr/sbin/nologin -h ${SONAR_SCANNER_HOME} -G sonar sonar \
   && chown -R sonar:sonar ${SONAR_SCANNER_HOME} \
-  && mkdir -p /workspace \
-  && chown -R sonar:sonar /workspace
+  && mkdir -p /builds \
+  && chown -R sonar:sonar /builds
 
 USER sonar
-
-WORKDIR /workspace
 
 ADD entrypoint.sh /entrypoint.sh
 
