@@ -3,10 +3,11 @@
 set -e
 
 VERSION=${CI_BUILD_TAG:-"${CI_BUILD_REF_NAME}"}
+PROJECT=${CI_PROJECT_NAMESPACE}-${CI_PROJECT_NAME}
 
 env
 
-OPTS="-Dsonar.projectKey=${CI_PROJECT_ID} -Dsonar.projectName=${CI_PROJECT_NAME} -Dsonar.sources=/workspace -Dsonar.projectVersion=${VERSION} -Dsonar.gitlab.project_id=${CI_PROJECT_ID} -Dsonar.gitlab.commit_sha=${CI_BUILD_REF} -Dsonar.gitlab.ref_name=${CI_BUILD_REF_NAME} -Dsonar.issuesReport.console.enable=true -Dsonar.verbose=true"
+OPTS="-Dsonar.projectKey=${PROJECT} -Dsonar.projectName=${PROJECT} -Dsonar.sources=/workspace -Dsonar.projectVersion=${VERSION} -Dsonar.gitlab.project_id=${CI_PROJECT_ID} -Dsonar.gitlab.commit_sha=${CI_BUILD_REF} -Dsonar.gitlab.ref_name=${CI_BUILD_REF_NAME} -Dsonar.issuesReport.console.enable=true -Dsonar.verbose=true"
 
 # TODO: Improve entrypoint to support gitlab-runner
 cd ${CI_PROJECT_DIR}
