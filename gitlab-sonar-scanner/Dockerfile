@@ -22,6 +22,8 @@ RUN addgroup sonar \
 
 USER sonar
 
+WORKDIR /builds
+
 ADD entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
