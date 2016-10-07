@@ -21,9 +21,8 @@ RUN addgroup sonar \
   && chown -R sonar:sonar /data
 
 USER sonar
-WORKDIR /data
 
-VOLUME /data
+WORKDIR /workspace
 
 ADD entrypoint.sh /entrypoint.sh
 
