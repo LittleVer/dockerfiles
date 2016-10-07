@@ -26,4 +26,4 @@ WORKDIR /workspace
 
 ADD entrypoint.sh /entrypoint.sh
 
-#ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
