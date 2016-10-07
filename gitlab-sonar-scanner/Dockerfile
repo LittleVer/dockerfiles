@@ -17,8 +17,8 @@ RUN apk update \
 RUN addgroup sonar \
   && adduser -D -s /usr/sbin/nologin -h ${SONAR_SCANNER_HOME} -G sonar sonar \
   && chown -R sonar:sonar ${SONAR_SCANNER_HOME} \
-  && mkdir -p /data \
-  && chown -R sonar:sonar /data
+  && mkdir -p /workspace \
+  && chown -R sonar:sonar /workspace
 
 USER sonar
 
