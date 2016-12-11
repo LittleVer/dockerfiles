@@ -79,6 +79,8 @@ RUN mkdir /var/www/html/data && \
         usermod -aG aria2 www-data && \
         usermod -aG www-data aria2
 
+VOLUME /var/www/html
+EXPOSE 80
 
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
